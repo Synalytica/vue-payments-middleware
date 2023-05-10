@@ -1,17 +1,19 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <router-view />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { StripePlugin } from "@vue-stripe/vue-stripe";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  created() {
+    StripePlugin.setOptions({
+      publishableKey: process.env.VUE_APP_STRIPE_PUBLISHABLE_KEY,
+    });
+  },
+};
 </script>
 
 <style>
